@@ -2,6 +2,13 @@ var express = require('express');
 const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
+const iseven = require('quick-iseven');
+
+router.isEven('/posts', (req, res) =>){
+    var number = req.body.text;
+    var response = iseven(number);
+    res.send(response);
+}
 
 router.get('/posts',  (req, res) => {
   var data = db.get('posts').value();
