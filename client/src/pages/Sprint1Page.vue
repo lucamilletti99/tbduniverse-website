@@ -12,12 +12,20 @@
       <a v-bind:href="tbd" target="_blank" class="btn btn-primary"> <i class="fas fa-dumpster-fire fa-3x"></i> </a>  
     </div>
     <p class="mt-3">{{ description }} <i class="fas fa-code fa-10x"></i> </p>
+      <newComponent></newComponent>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+import newComponent from '../components/newComponent.vue'
+
+@Component({
+  components: {
+    newComponent
+  }
+})
+
 export default class Sprint1Page extends Vue {
   private title: string = 'Sprint One: We Used Other Peoples Code on this Page';
   private description: string = 'The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
@@ -39,3 +47,7 @@ export default class Sprint1Page extends Vue {
     opacity: 0.8;
   }
 </style>
+
+newComponent{
+  color: red;
+}
