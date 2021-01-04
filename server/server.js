@@ -43,10 +43,3 @@ app.listen(port, () => {
   console.log('Server is running at localhost:' + port);
 });
 
-//basic unit test, no mocha involved
-//just shows the functionality of the npm
-const isEven = require('is-even');
-var evenNumber = 2; 
-console.log('Is ' + evenNumber + ' even? ' + isEven(evenNumber)); //should be output "Is 2 even? true"
-var oddNumber = 1;
-console.log('Is ' + oddNumber + ' even? ' + isEven(oddNumber)); //should be output "Is 1 even? false"

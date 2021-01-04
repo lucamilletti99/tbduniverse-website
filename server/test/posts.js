@@ -124,16 +124,20 @@ describe('Posts', function() {
   })
 });
 
-//personal unit test, doesn't actually do anything as of right now
-//see server.js 
+//Luca Milletti Unit Test
+//basic unit test, no mocha involved just shows the functionality of the npm 'is-even'
 const isEven = require('is-even'); //is-even npm required 
-var prompt = require('prompt'); //IO input NPM 
-describe('is-even NPM', function(){ //starting my test suite
-  prompt.get(['number'], function (err, result) { //prompts input(a formality as of right now)
-    if (err) { return onErr(err); } //error checking
-    console.log('Command-line input number received:'); //log to screen 
-    console.log('  Number to be checked: ' + result.number); //log to screen with number to be checked
-    expect(isEven(2)).to.be.true; //one check to make sure 2 is even(should return check)
-    expect('number').to.be.a('string');
-  }) 
+describe('is-even NPM', function() { //starting my test suite
+  describe('Even number', function(){
+    it('should output true',function(){
+    var evenNumber = 2; 
+    console.log('Is ' + evenNumber + ' even? ' + isEven(evenNumber)); //should be output "Is 2 even? true"
+    })
+  })
+  describe('Odd Number',function(){
+    it('should output false', function(){
+      var oddNumber = 1;
+      console.log('Is ' + oddNumber + ' even? ' + isEven(oddNumber)); //should be output "Is 1 even? false"
+    })
+  })
 });
