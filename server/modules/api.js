@@ -2,7 +2,7 @@ var express = require('express');
 const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
-const evenCheck = require('is-even');
+//const evenCheck = require('is-even');
 
 /* we believe this was causing our website to not display on local host when run
 function iseven(number){ //added is-even npm functionality
