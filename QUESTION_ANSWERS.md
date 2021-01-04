@@ -1,1 +1,5 @@
 ### Each sprint has conceptual questions - use this readme to answer them as a group!
+
+Question 1: We felt we communicated pretty well, organizing meeting times that fit into everyone's schedules and timezones. We primarily communicated through an imessage groupchat with more individual questions via direct message. We think maintaining a more constant form of communication could help in future sprints, and the fact that this week had New Years Eve/Day definitely didn't help our overall level of communication. 
+
+Question 2: We found that an NPM would be faster as these are downloaded to our server, at the cost of increasing the dependency list, thus bloating the node_modules folder. A CDN would be easier to manage as it involves remotely accessing someone's library, meaning we don't have to stress about downloading more depencies and increasing the size of our project like with an NPM. Our group didn't particularly have a preference of either, but noted that each has their own merit when it comes to when they should be implemented. 

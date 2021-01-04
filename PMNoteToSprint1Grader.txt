@@ -1,0 +1,7 @@
+PM Note to Sprint 1 Grader
+
+As we were finishing our project, we had a few comments about what we are submitting.
+
+Backend: we wrote a unit test similar to the ones shown in Sprint 0 in the posts.js, but we weren't sure where the tests output was printed to, so we weren't able to check the functionality of that test. In addition, we added an isEven function in the api.js file, but also weren't exactly sure how to test it without being in contact with the frontend which seems like a task for the next sprint.
+
+Frontend: Frontend members felt comfortable adding a new component and CDN but struggled when approaching the unit testing aspect. Referencing the sprint0.specs.ts file, they had trouble creating similar tests as the ones in that file seemed to be testing the routing aspect of the project from frontend to backend which we struggled with.
