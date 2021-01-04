@@ -41,4 +41,4 @@ router.delete('/posts/:id', (req, res) => {
 });
 
 module.exports = router;
-module.exports = iseven; 
+//module.exports = iseven; 
