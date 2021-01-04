@@ -123,3 +123,17 @@ describe('Posts', function() {
     it('post with id [:id] should be deleted');
   })
 });
+
+//personal unit test, doesn't actually do anything as of right now
+//see server.js 
+const isEven = require('is-even'); //is-even npm required 
+var prompt = require('prompt'); //IO input NPM 
+describe('is-even NPM', function(){ //starting my test suite
+  prompt.get(['number'], function (err, result) { //prompts input(a formality as of right now)
+    if (err) { return onErr(err); } //error checking
+    console.log('Command-line input number received:'); //log to screen 
+    console.log('  Number to be checked: ' + result.number); //log to screen with number to be checked
+    expect(isEven(2)).to.be.true; //one check to make sure 2 is even(should return check)
+    expect('number').to.be.a('string');
+  }) 
+});
