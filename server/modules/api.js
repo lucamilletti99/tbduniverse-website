@@ -2,10 +2,9 @@ var express = require('express');
 const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
-const iseven = require('is-even');
+const evenCheck = require('is-even');
 
-router.isEven('/posts', (req,res)=>{ //added is-even npm functionality
-    var number = req.body.text;
+function iseven(number){ //added is-even npm functionality
     var response = isEven(number);
     res.send(response); //no current usage right onw
 };
@@ -41,4 +40,4 @@ router.delete('/posts/:id', (req, res) => {
 });
 
 module.exports = router;
-module.exports = isEven;
+module.exports = iseven; 
