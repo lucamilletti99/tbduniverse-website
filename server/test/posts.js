@@ -126,7 +126,6 @@ describe('Posts', function() {
 
 //Luca Milletti Unit Test
 //basic unit test, no mocha involved just shows the functionality of the npm 'is-even'
-/*
 const isEven = require('is-even'); //is-even npm required 
 describe('is-even NPM', function() { //starting my test suite
   describe('Even number', function(){
@@ -141,4 +140,4 @@ describe('is-even NPM', function() { //starting my test suite
       console.log('Is ' + oddNumber + ' even? ' + isEven(oddNumber)); //should be output "Is 1 even? false"
     })
   })
-});*/
+});
