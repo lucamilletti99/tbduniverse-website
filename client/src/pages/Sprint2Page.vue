@@ -1,7 +1,7 @@
 <template>
   <div class="page page--about">
     <div class="alert alert-danger" role="alert">
-      This part will be done by you!
+      This part will done by you!
     </div>
     <h1>{{ title }}</h1>
     <div class="btn-group" role="group" aria-label="Basic example">
@@ -9,26 +9,41 @@
       <a v-bind:href="slackLink" target="_blank" class="btn btn-primary">Slack</a>
       <a v-bind:href="descLink" target="_blank" class="btn btn-primary">Project Description</a>
       <a v-bind:href="coursesiteLink" target="_blank" class="btn btn-primary">Coursesite</a>
+      <a v-bind:href="tbd" target="_blank" class="btn btn-primary"> <i class="fas fa-dumpster-fire fa-3x"></i> </a>  
+      <div style="color:red; width: 300px; border: 15px solid red; padding: 50px; margin: 20px;">
+      What time is it around the world???&#8594&#8594&#8594;
+      </div>
+      <a v-bind:href="clockLink" target="_blank" class="btn btn-primary">World Clock</a>
     </div>
-    <p class="mt-3">{{ description }}</p>
+    <p class="mt-3">{{ description }} <i class="fas fa-code fa-10x"></i> </p>
+      <newComponent></newComponent>
+    <p class = "mt-3" style = "color: red">{{ description2 }} </p>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import newComponent from '../components/newComponent.vue'
 
-@Component
+@Component({
+  components: {
+    newComponent
+  }
+})
+
 export default class Sprint1Page extends Vue {
-  private title: string = 'Sprint Two: Working better with your teammates.';
-  private description: string = 'This sprint is about working with your teammates. This will involve the backend implementing the singleton design pattern into the API call logic of the app. This will also involve developing a team-wide strategy for how you are going to cache local data - leveraging localstorage and cookies. The backend will need to make a request to an external API, transform the data and then create an endpoint that the frontend can call.';
+  private title: string = 'Sprint Two: Working Better With Your Teammates';
+  private description: string = 'Sprint 1: The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
+  private description2: string = 'Sprint 2: Added world time clock component';
 
-  private rubricLink: string = 'https://docs.google.com/document/d/1Qi0mLd4HHjZMbRWRkb1ZPnmVwi6DQGEoMSF7_kbbkXw/edit?usp=sharing';
-  private slackLink: string = 'https://app.slack.com/client/T01HDFMDT0T/C01GYGDP3JT';
+  private rubricLink: string = 'https://docs.google.com/document/d/1zVWKnUkdp5YZLm7QTdsexhSakfIsVgAkUdsRtXHgYRc/edit?usp=sharing';
+  private slackLink: string = 'https://app.slack.com/client/T01HDFMDT0T/C01J352F8U8';
   private descLink: string = 'https://docs.google.com/document/d/1igm6ORVncy5TLJkQsHFqOr72ojPIQ7bRpjF-H4ss0GY/edit?usp=sharing';
   private coursesiteLink: string = 'https://coursesite.lehigh.edu/course/view.php?id=195061';
+  private tbd: string = 'http://tbd.world/';
+  private clockLink: string = 'https://www.timeanddate.com/worldclock/';
 }
 </script>
-
 <style scoped>
   .about-logo a {
     padding: 20px;
@@ -39,3 +54,6 @@ export default class Sprint1Page extends Vue {
     opacity: 0.8;
   }
 </style>
+newComponent{
+  color: red;
+}
