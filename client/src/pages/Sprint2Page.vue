@@ -10,28 +10,29 @@
       <a v-bind:href="descLink" target="_blank" class="btn btn-primary">Project Description</a>
       <a v-bind:href="coursesiteLink" target="_blank" class="btn btn-primary">Coursesite</a>
       <a v-bind:href="tbd" target="_blank" class="btn btn-primary"> <i class="fas fa-dumpster-fire fa-3x"></i> </a>  
-      <div style="color:red; width: 300px; border: 15px solid red; padding: 50px; margin: 20px;">
-      What time is it around the world???&#8594&#8594&#8594;
-      </div>
       <a v-bind:href="clockLink" target="_blank" class="btn btn-primary">World Clock</a>
     </div>
     <p class="mt-3">{{ description }} <i class="fas fa-code fa-10x"></i> </p>
       <newComponent></newComponent>
+      <formComponent></formComponent>
     <p class = "mt-3" style = "color: red">{{ description2 }} </p>
+
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import newComponent from '../components/newComponent.vue'
+import formComponent from '../components/formComponent.vue'
 
 @Component({
   components: {
-    newComponent
+    newComponent,
+    formComponent
   }
 })
 
-export default class Sprint1Page extends Vue {
+export default class Sprint2Page extends Vue {
   private title: string = 'Sprint Two: Working Better With Your Teammates';
   private description: string = 'Sprint 1: The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
   private description2: string = 'Sprint 2: Added world time clock component';
@@ -43,6 +44,16 @@ export default class Sprint1Page extends Vue {
   private tbd: string = 'http://tbd.world/';
   private clockLink: string = 'https://www.timeanddate.com/worldclock/';
 }
+
+function createCookie(key:string, value:string) {
+  let cookie = escape(key) + "=" + escape(value) + ";";
+  document.cookie = cookie;
+  console.log(cookie);
+  console.log("Creating new cookie with key: " + key + " value: " + value);
+}
+createCookie("sport", "basketball");
+createCookie("icecream", "vanilla");
+
 </script>
 <style scoped>
   .about-logo a {
