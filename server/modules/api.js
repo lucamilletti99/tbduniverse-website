@@ -40,5 +40,27 @@ router.delete('/posts/:id', (req, res) => {
   }
 });
 
+//get and post request by jeff van buskirk
+router.get('/jeffTest',  (req, res) => {
+  var data = db.get('people').value();
+  res.status(200).json(data);
+});
+
+router.post('/jeffTest', (req, res) => {
+  var newPerson = {
+    name: req.body.text,
+    insta: req.body.text,
+    gitlab: req.body.text
+  };
+
+  if (req.body.text) {
+    db.get('people').push(newPerson).write();
+    res.send(newPerson);
+  } else {
+    res.status(400).send(newPost);
+  }
+});
+
+
 module.exports = router;
 //module.exports = iseven; 

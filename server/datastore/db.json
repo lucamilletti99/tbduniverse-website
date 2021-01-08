@@ -20,5 +20,13 @@
       "id": 1608363749582,
       "date": "Dec 19th, 02:54"
     }
+  ],
+
+  "people": [
+    {
+      "name": "jeff",
+      "insta": "@lolitsjef",
+      "gitlab": "https://gitlab.com/lolitsjef"
+    }
   ]
 }
