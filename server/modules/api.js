@@ -2,12 +2,25 @@ var express = require('express');
 const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
-const evenCheck = require('is-even');
+const axios = require('axios');
+//const evenCheck = require('is-even');
 
+/* we believe this was causing our website to not display on local host when run
 function iseven(number){ //added is-even npm functionality
     var response = isEven(number);
     res.send(response); //no current usage right onw
-};
+};*/
+var singleton = new Object();
+singleton.request = axios.get('https://api.chucknorris.io/jokes/random')
+.then(response => {
+    var joke = response.data.value;
+    console.log(joke);
+})
+.catch(error => {
+    console.log(error);
+}); 
+
+
 
 router.get('/posts',  (req, res) => {
   var data = db.get('posts').value();
@@ -39,5 +52,27 @@ router.delete('/posts/:id', (req, res) => {
   }
 });
 
+//get and post request by jeff van buskirk
+router.get('/jeffTest',  (req, res) => {
+  var data = db.get('people').value();
+  res.status(200).json(data);
+});
+
+router.post('/jeffTest', (req, res) => {
+  var newPerson = {
+    name: req.body.text,
+    insta: req.body.text,
+    gitlab: req.body.text
+  }
+
+  if (req.body.text) {
+    db.get('people').push(newPerson).write();
+    res.send(newPerson);
+  } else {
+    res.status(400).send(newPost);
+  }
+});
+
+
 module.exports = router;
-module.exports = iseven; 
+//module.exports = iseven; 
