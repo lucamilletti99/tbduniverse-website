@@ -14,9 +14,16 @@
     </div>
     <p class="mt-3">{{ description }} <i class="fas fa-code fa-10x"></i> </p>
       <newComponent></newComponent>
-      <formComponent></formComponent>
-    <p class = "mt-3" style = "color: red">{{ description2 }} </p>
+    <div id = "userInput">
+      <label> Username</label>
+      <input type = "text" v-model = "firstName"></input>
+      <label> Password </label>
+      <input type = "text" v-model = "lastName"></input>
+      <p>Password Verification:&nbsp&nbsp<em>{{ lastName }}</em></p>
+      <input type = "button" value = "Submit" onClick = "createCookie('username','firstName')"></input>
+    </div>
 
+    <p class = "mt-3" style = "color: red">{{ description2 }} </p>
   </div>
 </template>
 
@@ -36,24 +43,21 @@ export default class Sprint2Page extends Vue {
   private title: string = 'Sprint Two: Working Better With Your Teammates';
   private description: string = 'Sprint 1: The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
   private description2: string = 'Sprint 2: Added world time clock component';
-
   private rubricLink: string = 'https://docs.google.com/document/d/1zVWKnUkdp5YZLm7QTdsexhSakfIsVgAkUdsRtXHgYRc/edit?usp=sharing';
   private slackLink: string = 'https://app.slack.com/client/T01HDFMDT0T/C01J352F8U8';
   private descLink: string = 'https://docs.google.com/document/d/1igm6ORVncy5TLJkQsHFqOr72ojPIQ7bRpjF-H4ss0GY/edit?usp=sharing';
   private coursesiteLink: string = 'https://coursesite.lehigh.edu/course/view.php?id=195061';
   private tbd: string = 'http://tbd.world/';
   private clockLink: string = 'https://www.timeanddate.com/worldclock/';
+  private firstName: string = 'Enter UserName';
+  private lastName: string = 'Enter Password';
 }
-
-function createCookie(key:string, value:string) {
+function createCookie(key:any, value:any){
   let cookie = escape(key) + "=" + escape(value) + ";";
   document.cookie = cookie;
   console.log(cookie);
   console.log("Creating new cookie with key: " + key + " value: " + value);
-}
-createCookie("sport", "basketball");
-createCookie("icecream", "vanilla");
-
+};
 </script>
 <style scoped>
   .about-logo a {
