@@ -10,15 +10,21 @@ function iseven(number){ //added is-even npm functionality
     var response = isEven(number);
     res.send(response); //no current usage right onw
 };*/
-var singleton = new Object();
-singleton.request = axios.get('https://api.chucknorris.io/jokes/random')
-.then(response => {
-    var joke = response.data.value;
-    console.log(joke);
-})
-.catch(error => {
-    console.log(error);
-}); 
+
+class singletonClass{
+  constructor(){
+    let singleton = new Object();
+    singleton.request = axios.get('https://api.chucknorris.io/jokes/random')
+  .then(response => {
+      var joke = response.data.value;
+      console.log(joke);
+  })
+  .catch(error => {
+      console.log(error);
+  }); 
+  }
+}
+const p = new singletonClass();
 
 
 
@@ -53,16 +59,15 @@ router.delete('/posts/:id', (req, res) => {
 });
 
 //get and post request by jeff van buskirk
-router.get('/jeffTest',  (req, res) => {
+router.get('/jeffOne',  (req, res) => {
   var data = db.get('people').value();
   res.status(200).json(data);
 });
 
-router.post('/jeffTest', (req, res) => {
+router.post('/jeffTwo', (req, res) => {
   var newPerson = {
-    name: req.body.text,
-    insta: req.body.text,
-    gitlab: req.body.text
+    firstName: req.body.text,
+    LastName: req.body.text
   }
 
   if (req.body.text) {
