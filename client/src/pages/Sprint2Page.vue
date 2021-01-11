@@ -14,13 +14,11 @@
     </div>
     <p class="mt-3">{{ description }} <i class="fas fa-code fa-10x"></i> </p>
       <newComponent></newComponent>
-    <div id = "userInput">
+    <div>
       <label> Username</label>
-      <input type = "text" v-model = "firstName"></input>
+      <input type = "text" v-model = "username"></input>
       <label> Password </label>
-      <input type = "text" v-model = "lastName"></input>
-      <p>Password Verification:&nbsp&nbsp<em>{{ lastName }}</em></p>
-      <input type = "button" value = "Submit" onClick = "createCookie('username','firstName')"></input>
+      <input type = "text" v-model = "password"></input>
     </div>
 
     <p class = "mt-3" style = "color: red">{{ description2 }} </p>
@@ -49,8 +47,8 @@ export default class Sprint2Page extends Vue {
   private coursesiteLink: string = 'https://coursesite.lehigh.edu/course/view.php?id=195061';
   private tbd: string = 'http://tbd.world/';
   private clockLink: string = 'https://www.timeanddate.com/worldclock/';
-  private firstName: string = 'Enter UserName';
-  private lastName: string = 'Enter Password';
+  private username: string = 'Enter UserName';
+  private password: string = 'Enter Password';
 }
 function createCookie(key:any, value:any){
   let cookie = escape(key) + "=" + escape(value) + ";";
