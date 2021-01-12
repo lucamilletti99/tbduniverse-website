@@ -1,24 +1,9 @@
 <template>
   <div>
     <div>
-      <textarea class="form-control" v-model="formInput" @keyup="formError = ''"></textarea>
-      <button type="button" class="btn btn-primary mt-3" @click="addPost">Add Post</button>
-      <div class="post-form-error" v-if="formError">{{formError}}, probably should fill the form</div>
-    </div>
-    <div>
-      <div v-for="(post, index) in posts" :key="index">
-        <div class="card my-5">
-          <div class="card-header">
-            {{post.date}}
-          </div>
-          <div class="card-body">
-            <p class="card-text">{{post.text}}</p>
-            <div>
-              <button type="button" class="btn btn-danger" @click="deletePost(post.id)">Delete Post</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <button type="button" class="btn btn-primary mt-3" v-model = "buttonChoice" value = "0" @click="requestJoke">Yes</button>
+      <button type="button" class="btn btn-primary mt-3" v-model = "buttonChoice" value = "1" @click="requestJoke">No</button>
+      <div class="Joke-form-error" v-if="formError">{{formError}}, probably should fill the form</div>
     </div>
   </div>
 </template>
@@ -27,54 +12,36 @@
 import { Component, Vue } from 'vue-property-decorator';
 import JokesDataService from '../services/JokesDataService';
 
-interface Post {
-  id?: number,
-  text: string,
-  date?: string
+interface Joke {
+  choice:string
 };
 
 @Component
-export default class Posts extends Vue {
-  private posts: Post[] = [];
-  private formInput: string = '';
-  private formError: string = '';
+export default class Jokes extends Vue {
+  private buttonChoice: string = "0"; //either 0 or 1 (0 is yes, 1 is no)
 
-  created() {
-    JokesDataService.getAll()
-      .then(response => {
-        console.log(response.data)
-        this.posts = response.data.reverse();
-      })
-      .catch(err => {
-        console.error(`Couldn't fetch all posts: ${err}`)
-      })
-  }
+  public requestJoke(): void {
+    const newJoke: Joke = {
+      choice: this.buttonChoice
 
-  public addPost(): void {
-    const newPost: Post = {
-      text: this.formInput
     }
 
-    JokesDataService.create(newPost)
+    JokesDataService.create(newJoke)
       .then(response => {
-        this.posts.unshift(response.data);
+        
       })
       .catch(err => {
-        this.formError = err.reponse.statusText;
+        
       })
-  }
 
-  public deletePost(id: number): void {
-    JokesDataService.delete(id)
-      .then(response => {
-        let newPosts = this.posts.filter(post => post.id !== response.data[0].id);
-        this.posts = newPosts;
-      })
-      .catch(err => {
-        console.error(err.response);
-      })
+    var key = "jokeChoice"
+    let cookie = escape(key) + "=" + escape(this.buttonChoice) + ";";
+    document.cookie = cookie;
+    console.log(cookie);
+    console.log("Creating new cookie with key: " + key + " value: " + this.buttonChoice);
   }
 }
+
 </script>
 
 <style scoped>

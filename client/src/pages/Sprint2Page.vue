@@ -12,17 +12,12 @@
       <a v-bind:href="tbd" target="_blank" class="btn btn-primary"> <i class="fas fa-dumpster-fire fa-3x"></i> </a>  
       <a v-bind:href="clockLink" target="_blank" class="btn btn-primary">World Clock</a>
     </div>
-    <p class="mt-3">{{ description }} <i class="fas fa-code fa-10x"></i> </p>
+    <p>{{ description }}</p>
       <newComponent></newComponent>
-    <div>
-      <label>Do you like jokes?&nbsp&nbsp
-        <button>Yes</button>
-        <button>No</button>
-      </label>
-      
-    </div>
 
-    <p class = "mt-3" style = "color: red">{{ description2 }} </p>
+    <p>{{ description2 }}</p>
+      <label>Do you like jokes?</label>
+      <Jokes></Jokes><br><br><br>
   </div>
 </template>
 
@@ -35,14 +30,14 @@ import Jokes from '../components/Jokes.vue'
 @Component({
   components: {
     newComponent,
-    formComponent
+    Jokes
   }
 })
 
 export default class Sprint2Page extends Vue {
   private title: string = 'Sprint Two: Working Better With Your Teammates';
   private description: string = 'Sprint 1: The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
-  private description2: string = 'Sprint 2: Added world time clock component';
+  private description2: string = 'Sprint 2: Added a user choice for joke sent to backend (and a cheeky world clock!)';
   private rubricLink: string = 'https://docs.google.com/document/d/1zVWKnUkdp5YZLm7QTdsexhSakfIsVgAkUdsRtXHgYRc/edit?usp=sharing';
   private slackLink: string = 'https://app.slack.com/client/T01HDFMDT0T/C01J352F8U8';
   private descLink: string = 'https://docs.google.com/document/d/1igm6ORVncy5TLJkQsHFqOr72ojPIQ7bRpjF-H4ss0GY/edit?usp=sharing';
@@ -52,12 +47,7 @@ export default class Sprint2Page extends Vue {
   private username: string = 'Enter UserName';
   private password: string = 'Enter Password';
 }
-function createCookie(key:any, value:any){
-  let cookie = escape(key) + "=" + escape(value) + ";";
-  document.cookie = cookie;
-  console.log(cookie);
-  console.log("Creating new cookie with key: " + key + " value: " + value);
-};
+
 </script>
 <style scoped>
   .about-logo a {
