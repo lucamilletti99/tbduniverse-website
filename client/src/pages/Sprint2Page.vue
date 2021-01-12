@@ -15,10 +15,11 @@
     <p class="mt-3">{{ description }} <i class="fas fa-code fa-10x"></i> </p>
       <newComponent></newComponent>
     <div>
-      <label> Username</label>
-      <input type = "text" v-model = "username"></input>
-      <label> Password </label>
-      <input type = "text" v-model = "password"></input>
+      <label>Do you like jokes?&nbsp&nbsp
+        <button>Yes</button>
+        <button>No</button>
+      </label>
+      
     </div>
 
     <p class = "mt-3" style = "color: red">{{ description2 }} </p>
