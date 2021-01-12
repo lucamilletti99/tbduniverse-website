@@ -29,6 +29,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import newComponent from '../components/newComponent.vue'
 import formComponent from '../components/formComponent.vue'
+import Jokes from '../components/Jokes.vue'
 
 @Component({
   components: {
