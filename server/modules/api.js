@@ -3,6 +3,8 @@ const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
 const axios = require('axios');
+const { reject } = require('../datastore/datastore.js');
+
 //const evenCheck = require('is-even');
 
 /* we believe this was causing our website to not display on local host when run
@@ -11,22 +13,24 @@ function iseven(number){ //added is-even npm functionality
     res.send(response); //no current usage right onw
 };*/
 
-class singletonClass{
-  constructor(){
-    let singleton = new Object();
-    singleton.request = axios.get('https://api.chucknorris.io/jokes/random')
+ class singletonClass{
+   
+   static text = "Joke not loaded";
+   static request = axios.get('https://api.chucknorris.io/jokes/random')
   .then(response => {
-      var joke = response.data.value;
-      console.log(joke);
+     this.text = response.data.value;
+     //console.log(singleton.text);
   })
   .catch(error => {
       console.log(error);
   }); 
-  }
 }
-const p = new singletonClass();
-
-
+const promise1 = new Promise((resolve,reject)=>{
+  resolve(singletonClass.request);
+})
+promise1.then(x=>{
+  console.log(singletonClass.text);
+})
 
 router.get('/posts',  (req, res) => {
   var data = db.get('posts').value();
@@ -59,12 +63,16 @@ router.delete('/posts/:id', (req, res) => {
 });
 
 //get and post request by jeff van buskirk
-router.get('/jeffOne',  (req, res) => {
-  var data = db.get('people').value();
-  res.status(200).json(data);
+router.get('/joke',  (req, res) => {
+  if(req.body.value === true){ 
+    console.log(p.request.text);
+    res.status(200).send(p.request);
+  }else{
+    res.status(200).send(req.body.value);
+  }
 });
 
-router.post('/jeffTwo', (req, res) => {
+router.post('/newUser', (req, res) => {
   var newPerson = {
     firstName: req.body.text,
     LastName: req.body.text
