@@ -40,7 +40,7 @@ export default class Posts extends Vue {
   private formError: string = '';
 
   created() {
-    PostsDataService.getAll()
+    JokesDataService.getAll()
       .then(response => {
         console.log(response.data)
         this.posts = response.data.reverse();
@@ -55,7 +55,7 @@ export default class Posts extends Vue {
       text: this.formInput
     }
 
-    PostsDataService.create(newPost)
+    JokesDataService.create(newPost)
       .then(response => {
         this.posts.unshift(response.data);
       })
@@ -65,7 +65,7 @@ export default class Posts extends Vue {
   }
 
   public deletePost(id: number): void {
-    PostsDataService.delete(id)
+    JokesDataService.delete(id)
       .then(response => {
         let newPosts = this.posts.filter(post => post.id !== response.data[0].id);
         this.posts = newPosts;
