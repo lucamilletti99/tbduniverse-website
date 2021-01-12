@@ -1,25 +1,12 @@
 import https from './http-common';
 
 class JokesDataService {
-  getAll() {
-    return https.get('/posts');
-  }
-
   get(id: number) {
-    return https.get(`/posts/${id}`);
+    return https.get(`/joke/${id}`);
   }
 
   create(data: any) {
-    return https.post('/posts', data);
-  }
-
-  update(id: string, data: any) {
-    return https.put(`/posts/${id}`, data);
-  }
-
-  delete(id: number) {
-    return https.delete(`/posts/${id}`);
+    return https.post('/newUser', data);
   }
 }
-
 export default new JokesDataService();
