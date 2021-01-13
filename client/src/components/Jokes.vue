@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <button type="button" class="btn btn-primary mt-3" v-model = "buttonChoice" value = "0" @click="requestJoke">Yes</button>
-      <button type="button" class="btn btn-primary mt-3" v-model = "buttonChoice" value = "1" @click="requestJoke">No</button>
+      <button type="button" class="btn btn-primary mt-3"  @click= "requestJoke('0')" >Yes</button>
+      <button type="button" class="btn btn-primary mt-3"  @click= "requestJoke('1')" >No</button>
       <div class="Joke-form-error" v-if="formError">{{formError}}, probably should fill the form</div>
     </div>
   </div>
@@ -18,27 +18,22 @@ interface Joke {
 
 @Component
 export default class Jokes extends Vue {
-  private buttonChoice: string = "0"; //either 0 or 1 (0 is yes, 1 is no)
 
-  public requestJoke(): void {
+  public requestJoke(jokePreference: string): void { //either 0 or 1 (0 is yes, 1 is no)
     const newJoke: Joke = {
-      choice: this.buttonChoice
-
+      choice: jokePreference
     }
-
     JokesDataService.create(newJoke)
       .then(response => {
-        
       })
-      .catch(err => {
-        
+      .catch(err => {   
       })
 
     var key = "jokeChoice"
-    let cookie = escape(key) + "=" + escape(this.buttonChoice) + ";";
+    let cookie = escape(key) + "=" + escape(newJoke.choice) + ";";
     document.cookie = cookie;
     console.log(cookie);
-    console.log("Creating new cookie with key: " + key + " value: " + this.buttonChoice);
+    console.log("Creating new cookie with key: " + key + " value: " + newJoke.choice);
   }
 }
 
