@@ -3,7 +3,8 @@ const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
 const axios = require('axios');
-const { reject } = require('../datastore/datastore.js');
+const { reject, value } = require('../datastore/datastore.js');
+const { response } = require('express');
 
 //const evenCheck = require('is-even');
 
@@ -14,23 +15,48 @@ function iseven(number){ //added is-even npm functionality
 };*/
 
  class singletonClass{
-   
-   static text = "Joke not loaded";
-   static request = axios.get('https://api.chucknorris.io/jokes/random')
-  .then(response => {
-     this.text = response.data.value;
-     //console.log(singleton.text);
-  })
-  .catch(error => {
-      console.log(error);
-  }); 
+  
+    constructor(){
+      if(singletonClass.instance instanceof singletonClass){
+        return singletonClass.instance;
+      }
+      Object.freeze(this);
+      singletonClass.instance = this;
+    }
+      
+      requestJoke(){ 
+      return axios.get('https://api.chucknorris.io/jokes/random')
+      .then(response => {
+         return response.data.value;
+      })
+      .catch(error => {
+          console.log(error);
+          return -1;
+      });
+    }
+    
 }
+
+
+
+let shed = new singletonClass(); 
+
 const promise1 = new Promise((resolve,reject)=>{
-  resolve(singletonClass.request);
+  resolve(shed.requestJoke());
 })
 promise1.then(x=>{
-  console.log(singletonClass.text);
+  console.log(x);
 })
+const promise2 = new Promise((resolve,reject)=>{
+  resolve(shed.requestJoke());
+})
+promise2.then(x=>{
+  console.log(x);
+})
+
+
+
+
 
 router.get('/posts',  (req, res) => {
   var data = db.get('posts').value();
