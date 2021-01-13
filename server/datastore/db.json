@@ -21,12 +21,9 @@
       "date": "Dec 19th, 02:54"
     }
   ],
-
-  "people": [
+  "users":[
     {
-      "name": "jeff",
-      "insta": "@lolitsjef",
-      "gitlab": "https://gitlab.com/lolitsjef"
-    }
+    "preference": "0"
+  }
   ]
 }
