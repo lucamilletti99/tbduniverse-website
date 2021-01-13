@@ -23,7 +23,7 @@ function iseven(number){ //added is-even npm functionality
       Object.freeze(this);
       singletonClass.instance = this;
     }
-      
+      static ID = 1;
       requestJoke(){ 
       return axios.get('https://api.chucknorris.io/jokes/random')
       .then(response => {
@@ -41,12 +41,6 @@ function iseven(number){ //added is-even npm functionality
 
 let shed = new singletonClass(); 
 
-const promise1 = new Promise((resolve,reject)=>{
-  resolve(shed.requestJoke());
-})
-promise1.then(x=>{
-  console.log(x);
-})
 const promise2 = new Promise((resolve,reject)=>{
   resolve(shed.requestJoke());
 })
@@ -88,27 +82,32 @@ router.delete('/posts/:id', (req, res) => {
   }
 });
 
-//get and post request by jeff van buskirk
+//get and post request by jeff van buskirk and Blake Van Wilkey
 router.get('/joke',  (req, res) => {
   if(req.body.value === true){ 
-    console.log(p.request.text);
-    res.status(200).send(p.request);
+    const promise1 = new Promise((resolve,reject)=>{
+      resolve(shed.requestJoke());q
+    })
+    promise1.then(x=>{
+      res.status(200).send(x);
+    })
   }else{
     res.status(200).send(req.body.value);
   }
 });
 
-router.post('/newUser', (req, res) => {
-  var newPerson = {
-    firstName: req.body.text,
-    LastName: req.body.text
-  }
+router.post('/newPerson', (req, res) => {
 
   if (req.body.text) {
-    db.get('people').push(newPerson).write();
-    res.send(newPerson);
+    var shedder = {
+      id: shed.ID,
+      preference: req.body.cookie
+    }
+    db.get('users').push(shedder).write();
+    shed.ID++;
+    res.status(200).send(shedder);
   } else {
-    res.status(400).send(newPost);
+    res.status(400).send(req.body);
   }
 });
 
