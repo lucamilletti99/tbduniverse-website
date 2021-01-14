@@ -3,7 +3,6 @@
     <div>
       <button type="button" class="btn btn-primary mt-3"  @click= "requestJoke('0')" >Yes</button>
       <button type="button" class="btn btn-primary mt-3"  @click= "requestJoke('1')" >No</button>
-      <div class="Joke-form-error" v-if="formError">{{formError}}, probably should fill the form</div>
       <p id = "jokeResponse"></p>
     </div>
   </div>
@@ -24,12 +23,7 @@ export default class Jokes extends Vue {
     const newJoke: Joke = {
       choice: jokePreference
     }
-    JokesDataService.create(newJoke)
-      .then(response => {
-      })
-      .catch(err => {   
-      })
-
+  
     var key = "jokeChoice"
     let cookie = escape(key) + "=" + escape(newJoke.choice) + ";";
     document.cookie = cookie;
@@ -37,21 +31,23 @@ export default class Jokes extends Vue {
     console.log("Creating new cookie with key: " + key + " value: " + newJoke.choice);
     //ReST Functions
     if(newJoke.choice == "0"){
-      fetch('/joke', {method: 'GET', headers: {'Content-Type': "application/json"}}).then(response=>{
+      fetch('/joke', {method: 'GET', headers: {'Content-Type': "application/json"}}).then(response=> {
+        console.log(response);
         document.getElementById("jokeResponse")!.innerHTML = response.toString();
-        localStorage.setItem('joke',response.toString());
-      });
+        localStorage.setItem('joke', response.toString());
+       });
     }
     else {
       fetch('/noJoke', {method: 'GET', headers: {'Content-Type': "application/json"}}).then(response=>{
-        document.getElementById("jokeResponse")!.innerHTML = response.toString();
+        console.log(response.toString());
+        document.getElementById("jokeResponse")!.innerHTML = JSON.stringify(response);
         localStorage.setItem('joke',response.toString());
       });
     }
-    fetch('/newPerson', {method: 'POST', headers: {'Content-Type': "application/json"}, body: document.cookie});
+   // fetch('/newPerson', {method: 'POST', headers: {'Content-Type': "application/json"}, body: document.cookie});
   }
-}
 
+}
 </script>
 
 <style scoped>

@@ -21,9 +21,144 @@
       "date": "Dec 19th, 02:54"
     }
   ],
-  "users":[
+  "users": [
     {
-    "preference": "0"
-  }
+      "preference": "0"
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    },
+    {
+      "preference": {
+        "choice": "0"
+      }
+    },
+    {
+      "preference": {
+        "choice": "1"
+      }
+    }
   ]
 }

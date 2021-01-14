@@ -82,16 +82,19 @@ router.delete('/posts/:id', (req, res) => {
 });
 
 //get and post request by jeff van buskirk and Blake Van Wilkey
-router.get('/joke',  (req, res) => {
+router.get('/joke', function(req, res, next){
     const promise1 = new Promise((resolve,reject)=>{
       resolve(shed.requestJoke());
     });
     promise1.then(x=>{
-      res.status(200).send(x);
+      
+      res.send(x);
     });
 });
-router.get('/noJoke',  (req, res) => {
-   res.status(404).send("User Doesn't like Jokes");
+
+router.get('/noJoke',  function(req, res, next){
+  console.log("NO JOKE");
+   res.send("User Doesn't like Jokes");
 });
 router.post('/newPerson', (req, res) => {
 
