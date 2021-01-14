@@ -1,12 +1,16 @@
 import https from './http-common';
 
 class JokesDataService {
-  get(id: number) {
-    return https.get(`/joke/${id}`);
+  get(choice: string) {
+    console.log("choice" + choice);
+    if(choice == "1"){
+      return https.get(`/joke`);
+    }
+    else return https.get(`/noJoke`);
+    
   }
-
   create(data: any) {
-    return https.post('/newPerson', data);
+    return https.post('/joke', data);
   }
 }
 export default new JokesDataService();

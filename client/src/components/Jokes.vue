@@ -1,8 +1,8 @@
 <template>
   <div>
     <div>
-      <button type="button" class="btn btn-primary mt-3"  @click= "requestJoke('0')" >Yes</button>
-      <button type="button" class="btn btn-primary mt-3"  @click= "requestJoke('1')" >No</button>
+      <button type="button" class="btn btn-primary mt-3"  @click= "addJoke('0')" >Yes</button>
+      <button type="button" class="btn btn-primary mt-3"  @click= "addJoke('1')" >No</button>
       <p id = "jokeResponse"></p>
     </div>
   </div>
@@ -18,35 +18,32 @@ interface Joke {
 
 @Component
 export default class Jokes extends Vue {
-
-  public requestJoke(jokePreference: string): void { //either 0 or 1 (0 is yes, 1 is no)
-    const newJoke: Joke = {
-      choice: jokePreference
-    }
-  
-    var key = "jokeChoice"
-    let cookie = escape(key) + "=" + escape(newJoke.choice) + ";";
-    document.cookie = cookie;
-    console.log(cookie);
-    console.log("Creating new cookie with key: " + key + " value: " + newJoke.choice);
-    //ReST Functions
-    if(newJoke.choice == "0"){
-      fetch('/joke', {method: 'GET', headers: {'Content-Type': "application/json"}}).then(response=> {
-        console.log(response);
-        document.getElementById("jokeResponse")!.innerHTML = response.toString();
-        localStorage.setItem('joke', response.toString());
-       });
-    }
-    else {
-      fetch('/noJoke', {method: 'GET', headers: {'Content-Type': "application/json"}}).then(response=>{
-        console.log(response.toString());
-        document.getElementById("jokeResponse")!.innerHTML = JSON.stringify(response);
-        localStorage.setItem('joke',response.toString());
-      });
-    }
-   // fetch('/newPerson', {method: 'POST', headers: {'Content-Type': "application/json"}, body: document.cookie});
-  }
-
+    public addJoke(jokePreference: string): void {//either 0 or 1 (0 is yes, 1 is no)
+      const newJoke: Joke = {
+        choice: jokePreference
+      }
+      JokesDataService.get(jokePreference).then(response => {
+          var key = "jokeChoice"
+          let cookie = escape(key) + "=" + escape(newJoke.choice) + ";";
+          document.cookie = cookie;
+          console.log(cookie);
+          console.log("Creating new cookie with key: " + key + " value: " + newJoke.choice);
+          //ReST Functions
+          if(newJoke.choice == "0"){
+            console.log(response);
+            document.getElementById("jokeResponse")!.innerHTML = response.toString();
+            localStorage.setItem('joke', response.toString());
+          }
+          else {
+            console.log(response.toString());
+            document.getElementById("jokeResponse")!.innerHTML = response.data;
+            localStorage.setItem('joke',response.data);
+          }
+        })
+        .catch(err => {
+          console.error(`Couldn't fetch joke: ${err}`)
+        })
+      }
 }
 </script>
 
