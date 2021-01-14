@@ -36,8 +36,9 @@ export default class Jokes extends Vue {
     console.log(cookie);
     console.log("Creating new cookie with key: " + key + " value: " + newJoke.choice);
     //ReST Functions
-    fetch('/joke', {method: 'GET', headers: {'Content-Type': "application/json"}, body: newJoke.choice}).then(response=>{
+    fetch('/joke', {method: 'GET', headers: {'Content-Type': "application/json"}}).then(response=>{
       document.getElementById("jokeResponse")!.innerHTML = response.toString();
+      localStorage.setItem('joke',response.toString());
     });
     fetch('/newPerson', {method: 'POST', headers: {'Content-Type': "application/json"}, body: cookie});
   }
