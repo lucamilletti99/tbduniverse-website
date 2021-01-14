@@ -82,27 +82,32 @@ router.delete('/posts/:id', (req, res) => {
 });
 
 //get and post request by jeff van buskirk and Blake Van Wilkey
-router.get('/joke',  (req, res) => {
-  if(req.body.value === true){ 
+router.get('/joke/:uID',  (req, res) => {
+   
+  let correctUser = db.get('users').find(obj=>{
+    return obj.ID === uID;
+  });
+
+  if(correctUser != undefined){
     const promise1 = new Promise((resolve,reject)=>{
-      resolve(shed.requestJoke());q
-    })
+      resolve(shed.requestJoke());
+    });
     promise1.then(x=>{
       res.status(200).send(x);
-    })
+    });
   }else{
-    res.status(200).send(req.body.value);
-  }
+    res.status(404).send(uID);
+    }
 });
 
 router.post('/newPerson', (req, res) => {
 
-  if (req.body.text) {
+  if (req.body.pref && req.body.id) {
     var shedder = {
-      preference: req.body.cookie
+      preference: req.body.pref,
+      ID: req.body.id
     }
     db.get('users').push(shedder).write();
-    shed.ID++;
     res.status(200).send(shedder);
   } else {
     res.status(400).send(req.body);
