@@ -14,7 +14,6 @@
     </div>
     <p>{{ description }}</p>
       <newComponent></newComponent>
-
     <p>{{ description2 }}</p>
       <label>Do you like jokes?</label>
       <Jokes></Jokes><br><br><br>
@@ -37,7 +36,7 @@ import Jokes from '../components/Jokes.vue'
 export default class Sprint2Page extends Vue {
   private title: string = 'Sprint Two: Working Better With Your Teammates';
   private description: string = 'Sprint 1: The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
-  private description2: string = 'Sprint 2: Added a user choice for joke sent to backend (and a cheeky world clock!)';
+  private description2: string = 'Sprint 2: Added a user choice for joke sent to backend (and a cheeky world clock!) . Our main goal was to ensure our get endpoint was working smoothly, and that the cookies and caching was being handled correctly!';
   private rubricLink: string = 'https://docs.google.com/document/d/1zVWKnUkdp5YZLm7QTdsexhSakfIsVgAkUdsRtXHgYRc/edit?usp=sharing';
   private slackLink: string = 'https://app.slack.com/client/T01HDFMDT0T/C01J352F8U8';
   private descLink: string = 'https://docs.google.com/document/d/1igm6ORVncy5TLJkQsHFqOr72ojPIQ7bRpjF-H4ss0GY/edit?usp=sharing';

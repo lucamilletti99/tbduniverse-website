@@ -44,6 +44,9 @@ export default class Jokes extends Vue {
           console.error(`Couldn't fetch joke: ${err}`)
         })
       }
+    public postJoke(cookie: any) : void{
+      JokesDataService.create(document.cookie); //send post request, sending them the information about the singular cookie on the client side
+    }
 }
 </script>
 
