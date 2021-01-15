@@ -31,11 +31,11 @@ export default class Jokes extends Vue {
           //ReST Functions
           if(newJoke.choice == "0"){
             console.log(response);
-            document.getElementById("jokeResponse")!.innerHTML = response.toString();
-            localStorage.setItem('joke', response.toString());
+            document.getElementById("jokeResponse")!.innerHTML = response.data;
+            localStorage.setItem('joke', response.data);
           }
           else {
-            console.log(response.toString());
+            console.log(response.data);
             document.getElementById("jokeResponse")!.innerHTML = response.data;
             localStorage.setItem('joke',response.data);
           }

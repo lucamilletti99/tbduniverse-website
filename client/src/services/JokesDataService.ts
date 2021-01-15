@@ -4,9 +4,9 @@ class JokesDataService {
   get(choice: string) {
     console.log("choice" + choice);
     if(choice == "1"){
-      return https.get(`/joke`);
+      return https.get(`/noJoke`);
     }
-    else return https.get(`/noJoke`);
+    else return https.get(`/joke`);
     
   }
   create(data: any) {
