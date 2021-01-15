@@ -141,3 +141,15 @@ describe('is-even NPM', function() { //starting my test suite
     })
   })
 });
+
+//Jeff Van Buskirk Unit Test
+//basic unit test, tests to see if chuck norris joke gets generated
+const singletonClass = require('../modules/api.js'); //api.js is required
+describe('singleton joke generation', function() { //starting my test suite
+  describe('should generate a joke', function(){
+    it('should output a joke',function(){
+    let shmee = new singletonClass();
+    console.log(shmee.requestJoke()); //should output a cool joke
+    })
+  })
+});
