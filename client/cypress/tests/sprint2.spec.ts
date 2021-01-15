@@ -1,25 +1,23 @@
 describe('Sprint 2', () => {
+    beforeEach(()=>{
+        cy.visit('/sprint2');
+    })
     describe('button clicks', () => {
-
+        
         //Luke Lenny's unit test, checking to ensure the Yes button correctly requests 
-        //from server and recieves a joke
+        //from server and receives a joke
         it('Should output a joke', () => { 
-        /*
-          cy.fixture('jokeChoice.json').then(joke =>{
-            cy.intercept('GET', '/api/jokes', joke); 
-
-            cy.reload();
-
-            cy.get('card-header')
-              cy.should('have.length', joke.length)
-              .then(headers =>{
-                 expect(headers[0].innerText).to.equal(joke.choice)
-              });
-          });
-           */
+            cy.get('Button').contains('Yes').click(); //clicks the no button
+            cy.intercept('GET','/api/joke', response => {
+                cy.get('jokeResponse').should('contain',response); //checks that the response is the same as the output message
+            });
+            cy.contains("User Doesn't like Jokes").should("not.exist");
         })
+        /*Luca Milletti Unit Test
+        Makes sure that when the 'no' button is clicked, a specific user message is output */
         it('Should output "User Doesnt like Jokes"', () => {
-
+            cy.get('Button').contains('No').click(); //clicks the no button
+            cy.contains("User Doesn't like Jokes"); //check if user doesn't like jokes is output
         });
     })
 });
