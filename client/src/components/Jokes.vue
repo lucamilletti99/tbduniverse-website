@@ -31,7 +31,7 @@ export default class Jokes extends Vue {
           //ReST Functions
           if(newJoke.choice == "0"){
             console.log(response);
-            document.getElementById("jokeResponse")!.innerHTML = response.data;
+            document.getElementById("jokeResponse")!.innerText = response.data;
             localStorage.setItem('joke', response.data);
           }
           else {
