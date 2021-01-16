@@ -1,0 +1,4 @@
+PM: Blake Wilkey 
+Backend: Wrote Rest endpoints to create elements in database for post and to get a chuck norris joke from external api when get route is accessed. 
+Jefs Unit Test was unable to test his own unit test since he had no access to unix to run mocha.
+Frontend: Created a yes/no vue component and on yes click the get route is fetched and returns a JSON containing a chucknorris joke. The joke is then rendered on the page
