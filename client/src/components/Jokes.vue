@@ -36,7 +36,7 @@ export default class Jokes extends Vue {
           }
           else {
             console.log(response.data);
-            document.getElementById("jokeResponse")!.innerHTML = response.data;
+            document.getElementById("jokeResponse")!.innerText= response.data;
             localStorage.setItem('joke',response.data);
           }
         })
