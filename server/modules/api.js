@@ -105,9 +105,14 @@ router.post('/jokeSubmit', (req, res) => {
     text: req.body.text,
   };
   if (req.body.text) {
-    db.get('posts').push(newPost).write();
-    res.send(newPost);
-    res.send("Your joke was funny!")
+    if(req.body.text.length < 20){
+      db.get('jokes').push(newPost).write();
+      res.send("Your joke was funny!");
+    }
+    else {
+      res.send("Your jokes was not funny :(");
+    }
+    
   } else {
     res.status(400).send(newPost);
   }
