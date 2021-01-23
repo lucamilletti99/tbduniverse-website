@@ -6,14 +6,6 @@ const axios = require('axios');
 const { reject, value } = require('../datastore/datastore.js');
 const { response } = require('express');
 
-//const evenCheck = require('is-even');
-
-/* we believe this was causing our website to not display on local host when run
-function iseven(number){ //added is-even npm functionality
-    var response = isEven(number);
-    res.send(response); //no current usage right onw
-};*/
-
  class singletonClass{
   
     constructor(){
@@ -49,8 +41,7 @@ promise2.then(x=>{
 
 
 
-
-
+//ReST Functions
 router.get('/posts',  (req, res) => {
   var data = db.get('posts').value();
   res.status(200).json(data);
@@ -109,6 +100,22 @@ router.post('/newPerson', (req, res) => {
   }
 });
 
+router.post('/jokeSubmit', (req, res) => {
+  var newPost = {
+    text: req.body.text,
+  };
+  if (req.body.text) {
+    if(req.body.text.length < 20){
+      db.get('jokes').push(newPost).write();
+      res.send("Your joke was funny!");
+    }
+    else {
+      res.send("Your jokes was not funny :(");
+    }
+    
+  } else {
+    res.status(400).send(newPost);
+  }
+});
 
 module.exports = router;
-//module.exports = iseven; 

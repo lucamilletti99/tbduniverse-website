@@ -3,7 +3,8 @@
     <div>
       <textarea class="form-control" v-model="formInput" @keyup="formError = ''"></textarea>
       <button type="button" class="btn btn-primary mt-3" @click="postJoke">Submit Joke</button>
-      <div class="post-form-error" v-if="formError">{{formError}}, probably should fill the form</div>
+      <p id = "jokeResponse"></p>
+      <p id = "jokeJudge" style = 'font-family: "Comic Sans MS", "Comic Sans", cursive' ></p>
     </div>
   </div>
 </template>
@@ -14,6 +15,9 @@ import JokesDataService from '../services/JokesDataService';
 
 interface jokeAdded {
   text: string
+};
+interface Joke {
+  choice:string
 };
 
 @Component
@@ -46,11 +50,13 @@ export default class jokeSubmit extends Vue {
           console.error(`Couldn't fetch joke: ${err}`)
         })
       }
-    public postJoke(cookie: any) : void{
+    public postJoke() : void{
         const newJoke: jokeAdded = {
             text: this.formInput
         }
-      JokesDataService.create(newJoke); //send post request, sending them the information about the singular cookie on the client side
+      JokesDataService.create(newJoke).then(response =>{
+        document.getElementById("jokeJudge")!.innerText = response.data;
+      }); //send post request, sending them the information about the singular cookie on the client side
     }
 }
 </script>

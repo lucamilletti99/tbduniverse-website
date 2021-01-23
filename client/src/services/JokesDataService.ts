@@ -10,7 +10,7 @@ class JokesDataService {
     
   }
   create(data: any) {
-    return https.post('/joke', data);
+    return https.post('/jokeSubmit', data);
   }
 }
 export default new JokesDataService();
