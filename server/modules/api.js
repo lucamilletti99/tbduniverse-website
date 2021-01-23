@@ -102,5 +102,17 @@ router.post('/newPerson', (req, res) => {
   }
 });
 
+router.post('/jokeSubmit', (req, res) => {
+  var newPost = {
+    text: req.body.text,
+  };
+  if (req.body.text) {
+    db.get('posts').push(newPost).write();
+    res.send(newPost);
+    res.send("Your joke was funny!")
+  } else {
+    res.status(400).send(newPost);
+  }
+});
 
 module.exports = router;
