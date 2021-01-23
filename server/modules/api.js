@@ -3,13 +3,6 @@ const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
 const axios = require('axios');
-//const evenCheck = require('is-even');
-
-/* we believe this was causing our website to not display on local host when run
-function iseven(number){ //added is-even npm functionality
-    var response = isEven(number);
-    res.send(response); //no current usage right onw
-};*/
 
 class singletonClass{
   constructor(){
@@ -26,8 +19,7 @@ class singletonClass{
 }
 const p = new singletonClass();
 
-
-
+//ReST Functions
 router.get('/posts',  (req, res) => {
   var data = db.get('posts').value();
   res.status(200).json(data);
@@ -80,4 +72,3 @@ router.post('/jeffTwo', (req, res) => {
 
 
 module.exports = router;
-//module.exports = iseven; 
