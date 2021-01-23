@@ -16,6 +16,9 @@
     <p>{{ description2 }}</p>
       <label>Do you like jokes?</label>
       <Jokes></Jokes><br><br><br>
+
+      <label>Submit a joke here</label>
+      <jokeSubmit></jokeSubmit>
   </div>
 </template>
 
@@ -24,16 +27,18 @@ import { Component, Vue } from 'vue-property-decorator';
 import newComponent from '../components/newComponent.vue'
 import formComponent from '../components/formComponent.vue'
 import Jokes from '../components/Jokes.vue'
+import jokeSubmit from '../components/jokeSubmit.vue'
 
 @Component({
   components: {
     newComponent,
-    Jokes
+    Jokes,
+    jokeSubmit
   }
 })
 
-export default class Sprint2Page extends Vue {
-  private title: string = 'Sprint Three:The “Working with your users” Sprint';
+export default class Sprint3Page extends Vue {
+  private title: string = 'Sprint 3:The “Working with your users” Sprint';
   private description: string = 'Sprint 1: The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
   private description2: string = 'Sprint 2: Added a user choice for joke sent to backend (and a cheeky world clock!) . Our main goal was to ensure our get endpoint was working smoothly, and that the cookies and caching was being handled correctly!';
   private rubricLink: string = 'https://docs.google.com/document/d/1zVWKnUkdp5YZLm7QTdsexhSakfIsVgAkUdsRtXHgYRc/edit?usp=sharing';
