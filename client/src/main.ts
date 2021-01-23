@@ -2,7 +2,8 @@ import Vue from 'vue';
 import App from './components/App.vue';
 import router from './router/router';
 
-Vue.config.productionTip = false;
+var GSignInButton = require('vue-google-signin-button')
+Vue.use(GSignInButton)
 
 new Vue({
   router,

@@ -14,6 +14,7 @@
     </div>
     <p>{{ description }}</p>
     <p>{{ description2 }}</p>
+      <Oauth></Oauth><br><br><br>
       <label>Do you like jokes?</label>
       <Jokes></Jokes><br><br><br>
   </div>
@@ -24,11 +25,13 @@ import { Component, Vue } from 'vue-property-decorator';
 import newComponent from '../components/newComponent.vue'
 import formComponent from '../components/formComponent.vue'
 import Jokes from '../components/Jokes.vue'
+import Oauth from '../components/Oauth.vue'
 
 @Component({
   components: {
     newComponent,
-    Jokes
+    Jokes,
+    Oauth
   }
 })
 
