@@ -1,7 +1,7 @@
 <template>
   <div class="page page--about">
-    <div class="alert alert-danger" role="alert">
-      This part will done by you!
+    <div class="alert alert-success" role="alert">
+      This part is done by us!
     </div>
     <h1>{{ title }}</h1>
     <div class="btn-group" role="group" aria-label="Basic example">
@@ -33,7 +33,7 @@ import Jokes from '../components/Jokes.vue'
 })
 
 export default class Sprint2Page extends Vue {
-  private title: string = 'Sprint Two: Working Better With Your Teammates';
+  private title: string = 'Sprint Three:The “Working with your users” Sprint';
   private description: string = 'Sprint 1: The Frontend has utilized the Font Awesome CDN and imported the dumpster fire emoji (added a link aswell) and this code symbol';
   private description2: string = 'Sprint 2: Added a user choice for joke sent to backend (and a cheeky world clock!) . Our main goal was to ensure our get endpoint was working smoothly, and that the cookies and caching was being handled correctly!';
   private rubricLink: string = 'https://docs.google.com/document/d/1zVWKnUkdp5YZLm7QTdsexhSakfIsVgAkUdsRtXHgYRc/edit?usp=sharing';
