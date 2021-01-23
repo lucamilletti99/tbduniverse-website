@@ -3,21 +3,44 @@ const router = express.Router();
 var db = require('../datastore/datastore.js');
 var moment = require('moment');
 const axios = require('axios');
+const { reject, value } = require('../datastore/datastore.js');
+const { response } = require('express');
 
-class singletonClass{
-  constructor(){
-    let singleton = new Object();
-    singleton.request = axios.get('https://api.chucknorris.io/jokes/random')
-  .then(response => {
-      var joke = response.data.value;
-      console.log(joke);
-  })
-  .catch(error => {
-      console.log(error);
-  }); 
-  }
+ class singletonClass{
+  
+    constructor(){
+      if(singletonClass.instance instanceof singletonClass){
+        return singletonClass.instance;
+      }
+      Object.freeze(this);
+      singletonClass.instance = this;
+    }
+      static ID = 1;
+      requestJoke(){ 
+      return axios.get('https://api.chucknorris.io/jokes/random')
+      .then(response => {
+         return response.data.value;
+      })
+      .catch(error => {
+          console.log(error);
+          return -1;
+      });
+    }
+    
 }
-const p = new singletonClass();
+
+
+
+let shed = new singletonClass(); 
+
+const promise2 = new Promise((resolve,reject)=>{
+  resolve(shed.requestJoke());
+})
+promise2.then(x=>{
+  console.log(x);
+})
+
+
 
 //ReST Functions
 router.get('/posts',  (req, res) => {
@@ -50,23 +73,32 @@ router.delete('/posts/:id', (req, res) => {
   }
 });
 
-//get and post request by jeff van buskirk
-router.get('/jeffOne',  (req, res) => {
-  var data = db.get('people').value();
-  res.status(200).json(data);
+//get and post request by jeff van buskirk and Blake Van Wilkey
+router.get('/joke',  (req, res) => {
+  if(req.body.value === true){ 
+    const promise1 = new Promise((resolve,reject)=>{
+      resolve(shed.requestJoke());q
+    })
+    promise1.then(x=>{
+      res.status(200).send(x);
+    })
+  }else{
+    res.status(200).send(req.body.value);
+  }
 });
 
-router.post('/jeffTwo', (req, res) => {
-  var newPerson = {
-    firstName: req.body.text,
-    LastName: req.body.text
-  }
+router.post('/newPerson', (req, res) => {
 
   if (req.body.text) {
-    db.get('people').push(newPerson).write();
-    res.send(newPerson);
+    var shedder = {
+      id: shed.ID,
+      preference: req.body.cookie
+    }
+    db.get('users').push(shedder).write();
+    shed.ID++;
+    res.status(200).send(shedder);
   } else {
-    res.status(400).send(newPost);
+    res.status(400).send(req.body);
   }
 });
 
