@@ -15,9 +15,9 @@
     <p>{{ description }}</p>
     <p>{{ description2 }}</p>
       <label>Do you like jokes?</label>
-      <Jokes></Jokes><br><br><br>
+      <Jokes></Jokes><br>
 
-      <label>Submit a joke here</label>
+      <label>Submit a joke to be judged!</label>
       <jokeSubmit></jokeSubmit>
   </div>
 </template>
