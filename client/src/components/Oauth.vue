@@ -19,7 +19,7 @@ export default class Oauth extends Vue{
        * @type {Object}
        */
     public googleSignInParams: object = {
-        "client_id": '66180939535-t0ifkoenemkp82fip1dinrv93qp2hra4.apps.googleusercontent.com'
+        "client_id": '737843011689-gtsqvb6ba2a99q34iuo45pd2tvrsmsi4.apps.googleusercontent.com'
     }
 
     public onSignInSuccess (googleUser: any) {
