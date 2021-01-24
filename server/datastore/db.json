@@ -203,5 +203,13 @@
     {
       "text": "sdf"
     }
+  ],
+
+  "people": [
+    {
+      "name": "jeff",
+      "insta": "@lolitsjef",
+      "gitlab": "https://gitlab.com/lolitsjef"
+    }
   ]
 }
