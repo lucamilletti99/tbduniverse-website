@@ -4,14 +4,15 @@ describe('Sprint 3', () => {
     })
     describe('button clicks', () => {
         
-        //Luke Lenny's unit test, checking to ensure the Yes button correctly requests 
-        //from server and receives a joke
-        it('Should output a joke', () => { 
-            cy.get('Button').contains('Yes').click(); //clicks the no button
-            cy.intercept('GET','/api/joke', response => {
-                cy.get('jokeResponse').should('contain',response); //checks that the response is the same as the output message
+        //Luke Lenny's unit test, checking the functionality of entering a funny 
+        //joke according to our design
+        it('Should say joke was funny', () => { 
+            cy.get('textarea').type('abc')
+            cy.get('Button').contains('Submit Joke').click(); //clicks the Submit Joke button
+            cy.intercept('POST','/jokeSubmit', response => {
+                cy.get('jokeJudge').should('contain',response); //checks that the response is the same as the output message
             });
-            cy.contains("User Doesn't like Jokes").should("not.exist");
+            cy.contains("Your joke was funny!");
         })
         /*Luca Milletti Unit Test
         Makes sure that when the 'no' button is clicked, a specific user message is output */
