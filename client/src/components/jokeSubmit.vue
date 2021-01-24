@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <textarea class="form-control" v-model="formInput" @keyup="formError = ''"></textarea>
+      <textarea class="form-control" id = "formInput" v-model="formInput" @keyup="formError = ''"></textarea>
       <button type="button" class="btn btn-primary mt-3" @click="postJoke">Submit Joke</button>
       <p id = "jokeResponse"></p>
       <p id = "jokeJudge" style = 'font-family: "Comic Sans MS", "Comic Sans", cursive' ></p>
