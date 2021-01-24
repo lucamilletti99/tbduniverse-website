@@ -113,7 +113,7 @@ router.post('/jokeSubmit', (req, res) => {
     }
     
   } else {
-    res.status(400).send(newPost);
+    res.send("Please enter a joke!")
   }
 });
 
