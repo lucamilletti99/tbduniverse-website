@@ -14,6 +14,7 @@
     </div>
     <p>{{ description }}</p>
     <p>{{ description2 }}</p>
+      <Oauth></Oauth><br><br><br>
       <label>Do you like jokes?</label>
       <Jokes></Jokes><br>
 
@@ -28,12 +29,14 @@ import newComponent from '../components/newComponent.vue'
 import formComponent from '../components/formComponent.vue'
 import Jokes from '../components/Jokes.vue'
 import jokeSubmit from '../components/jokeSubmit.vue'
+import Oauth from '../components/Oauth.vue'
 
 @Component({
   components: {
     newComponent,
     Jokes,
-    jokeSubmit
+    jokeSubmit,
+    Oauth
   }
 })
 
