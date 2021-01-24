@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div>
+    <div id = "jokeArea">
       <textarea class="form-control" v-model="formInput" @keyup="formError = ''"></textarea>
       <button type="button" class="btn btn-primary mt-3" @click="postJoke">Submit Joke</button>
       <p id = "jokeResponse"></p>
-      <p id = "jokeJudge" style = 'font-family: "Comic Sans MS", "Comic Sans", cursive' ></p>
+      <p id = "jokeJudge" style = 'font-family: "Comic Sans MS", "Comic Sans", cursive' >
+        <p>What does Chuck Norris think?</p>
+      </p>   
+      <img v-if = "!jokeBool" :src="require('./images/madchuck.png')" contains width="200px" height="200px">
+      <img v-else :src="require('./images/happychuck.png')" contains width="300px" height="200px">
     </div>
   </div>
 </template>
@@ -14,15 +18,16 @@ import { Component, Vue } from 'vue-property-decorator';
 import JokesDataService from '../services/JokesDataService';
 
 interface jokeAdded {
-  text: string
+  text: string,
 };
 interface Joke {
-  choice:string
+  choice: string
 };
 
 @Component
 export default class jokeSubmit extends Vue { 
   private formInput: string = '';
+  private jokeBool: boolean = false; //for which image to show during render
 
   public addJoke(jokePreference: string): void {//either 0 or 1 (0 is yes, 1 is no)
       const newJoke: Joke = {
@@ -49,15 +54,17 @@ export default class jokeSubmit extends Vue {
         .catch(err => {
           console.error(`Couldn't fetch joke: ${err}`)
         })
+  }
+  public postJoke() : void{
+      const newJoke: jokeAdded = {
+        text: this.formInput,
       }
-    public postJoke() : void{
-        const newJoke: jokeAdded = {
-            text: this.formInput
-        }
-      JokesDataService.create(newJoke).then(response =>{
-        document.getElementById("jokeJudge")!.innerText = response.data;
-      }); //send post request, sending them the information about the singular cookie on the client side
-    }
+    JokesDataService.create(newJoke).then(response =>{
+      document.getElementById("jokeJudge")!.innerText = response.data;
+      if(response.data == "Your joke was funny!") this.jokeBool = true;
+      else this.jokeBool = false;
+    });
+  }
 }
 </script>
 

@@ -101,12 +101,11 @@ router.post('/newPerson', (req, res) => {
 });
 
 router.post('/jokeSubmit', (req, res) => {
-  var newPost = {
+  var newJoke = {
     text: req.body.text,
   };
   if (req.body.text) {
     if(req.body.text.length < 20){
-      db.get('jokes').push(newPost).write();
       res.send("Your joke was funny!");
     }
     else {
