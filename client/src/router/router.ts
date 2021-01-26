@@ -35,6 +35,11 @@ const routes: Array<RouteConfig> = [
     name: 'not-found',
     component: () => import('../pages/404.vue')
   },
+  {
+    path: '/sprint4login',
+    name: 'sprint-4login',
+    component: () => import('../pages/Sprint4login.vue')
+  },
 ];
 
 const router = new VueRouter({

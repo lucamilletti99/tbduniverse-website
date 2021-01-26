@@ -12,5 +12,8 @@ class JokesDataService {
   create(data: any) {
     return https.post('/jokeSubmit', data);
   }
+  getMsg(){
+    return https.get('/loginPage');
+  }
 }
 export default new JokesDataService();

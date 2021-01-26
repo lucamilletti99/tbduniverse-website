@@ -117,4 +117,8 @@ router.post('/jokeSubmit', (req, res) => {
   }
 });
 
+router.get('/loginPage', (req,res)=>{
+  res.send("Thanks for signing in! P.S. Will >> Chuck Norris!")
+})
+
 module.exports = router;

@@ -6,7 +6,8 @@
       @error="onSignInError">
       Sign in with Google
     </g-signin-button>
-    <img v-if = "signedIn" :src="require('./images/kingchuck.jpg')" contains width="200px" height="200px">
+    <br>
+    <router-link v-if = 'signedIn' class="nav-link" to="/sprint4login">Secret Page!</router-link>
   </div>
 </template>
 
