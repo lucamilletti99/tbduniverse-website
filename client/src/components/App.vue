@@ -21,6 +21,10 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/sprint3">Sprint 3</router-link>
             </li>
+            <li style = 'color: white; opacity: 0.5; margin-left: 500px; font-family: Cursive, Lucida Handwriting'>
+                <typeEffect></typeEffect>
+            </li>
+            
           </ul>
         </div>
     </nav>
@@ -32,7 +36,25 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import typeEffect from './typeJoke.vue'
 
-@Component
+@Component({
+  name: 'app',
+  components: {
+    typeEffect
+  }
+})
 export default class App extends Vue {}
 </script>
+<style scoped>
+  @import url('https://fonts.googleapis.com/css?family=Righteous');
+  .about-logo a {
+    padding: 20px;
+    outline: 1px solid rgb(169, 169, 169);
+    display: inline-block;
+  }
+  .about-logo a:hover {
+    opacity: 0.8;
+  }
+
+</style>
