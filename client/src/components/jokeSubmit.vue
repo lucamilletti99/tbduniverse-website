@@ -3,11 +3,11 @@
     <div id = "jokeInput">
       <textarea class="form-control" id = "formInput" v-model="formInput" @keyup="formError = ''"></textarea>
       <button type="button" class="btn btn-primary mt-3" @click="postJoke">Submit Joke</button>
-      <p id = "jokeJudge" style = 'font-family: "Comic Sans MS", "Comic Sans", cursive' >
-        <p>What does Chuck Norris think?</p>
-      </p>   
+      <p id = "jokeJudge" style = 'font-family: "Comic Sans MS", "Comic Sans", cursive'><p>
+      <p>What does Chuck Norris think?</p>  
       <img v-if = "!jokeBool" :src="require('./images/madchuck.png')" id = "madchuck" contains width="200px" height="200px">
       <img v-else :src="require('./images/happychuck.png')" id = 'happychuck' contains width="300px" height="200px">
+    </div>
   </div>
 </template>
 
