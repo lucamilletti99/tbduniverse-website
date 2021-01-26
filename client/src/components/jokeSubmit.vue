@@ -8,7 +8,6 @@
       </p>   
       <img v-if = "!jokeBool" :src="require('./images/madchuck.png')" id = "madchuck" contains width="200px" height="200px">
       <img v-else :src="require('./images/happychuck.png')" id = 'happychuck' contains width="300px" height="200px">
-    </div>
   </div>
 </template>
 

@@ -1,17 +1,21 @@
 <template>
-  <g-signin-button
-    :params="googleSignInParams"
-    @success="onSignInSuccess"
-    @error="onSignInError">
-    Sign in with Google
-  </g-signin-button>
+  <div>
+    <g-signin-button
+      :params="googleSignInParams"
+      @success="onSignInSuccess"
+      @error="onSignInError">
+      Sign in with Google
+    </g-signin-button>
+    <img v-if = "signedIn" :src="require('./images/kingchuck.jpg')" contains width="200px" height="200px">
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class Oauth extends Vue{
-  
+  private signedIn: boolean = false;
+
       /**
        * The Auth2 parameters, as seen on
        * https://developers.google.com/identity/sign-in/web/reference#gapiauth2initparams.
@@ -26,6 +30,7 @@ export default class Oauth extends Vue{
       // `googleUser` is the GoogleUser object that represents the just-signed-in user.
       // See https://developers.google.com/identity/sign-in/web/reference#users
       const profile = googleUser.getBasicProfile() // etc etc
+      this.signedIn = true;
     }
 
     public onSignInError (error: any) {
