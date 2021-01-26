@@ -1,9 +1,6 @@
 <template>
   <div class="page page--about">
-    <div class="alert alert-success" role="alert">
-      This part is done by us!
-    </div>
-    <h1>{{ title }}</h1>
+    <h3 style='font-family: "Comic Sans MS", "Comic Sans", cursive'>{{ title }}</h3>
     <div class="btn-group" role="group" aria-label="Basic example">
       <a v-bind:href="rubricLink" target="_blank" class="btn btn-primary">Rubric</a>
       <a v-bind:href="slackLink" target="_blank" class="btn btn-primary">Slack</a>
@@ -12,10 +9,10 @@
       <a v-bind:href="tbd" target="_blank" class="btn btn-primary"> <i class="fas fa-dumpster-fire fa-3x"></i> </a>  
       <a v-bind:href="clockLink" target="_blank" class="btn btn-primary">World Clock</a>
     </div>
-    <br>
-    <img  :src="require('../components/images/kingchuck.png')" contains width="250px" height="200px">
-    <button @click = "getLoginMsg">Get a secret message</button>
-    <p style = 'font-family: "Comic Sans MS", "Comic Sans", cursive'>{{ signInMsg }}</p>
+    <br><br>
+    <button @click = "getLoginMsg" style = 'font-family: cursive; font-size: 20px'>Get the secret message</button>
+    <p style = 'font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 50px'>{{ signInMsg }}</p>
+    <img v-if = "clicked" :src="require('../components/images/kingchuck.png')" contains width="400px" height="325px">
     
   </div>
 </template>
@@ -34,6 +31,7 @@ interface signIn {
 
 export default class Sprint4loginPage extends Vue {
     private signInMsg: string = "";
+    private clicked: boolean = false;
     private title: string = 'Sprint 4: Secret Login Route';
     private rubricLink: string = 'https://docs.google.com/document/d/1zVWKnUkdp5YZLm7QTdsexhSakfIsVgAkUdsRtXHgYRc/edit?usp=sharing';
     private slackLink: string = 'https://app.slack.com/client/T01HDFMDT0T/C01J352F8U8';
@@ -44,6 +42,7 @@ export default class Sprint4loginPage extends Vue {
     public getLoginMsg(): void {//either 0 or 1 (0 is yes, 1 is no)
         JokesDataService.getMsg().then(response => {
           this.signInMsg = response.data 
+          this.clicked = true;
         })
     }
 }

@@ -4,10 +4,9 @@
       :params="googleSignInParams"
       @success="onSignInSuccess"
       @error="onSignInError">
-      Sign in with Google
+      Sign in with your Google Account!
     </g-signin-button>
-    <br>
-    <router-link v-if = 'signedIn' class="nav-link" to="/sprint4login">Secret Page!</router-link>
+    <router-link v-if = 'signedIn' class="nav-link" to="/sprint4login" style = "margin-left: 50px; color: blue; text-decoration underline; font-family: cursive">Click here for a  Secret Page!</router-link>
   </div>
 </template>
 
